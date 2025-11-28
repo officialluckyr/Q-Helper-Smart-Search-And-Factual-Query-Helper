@@ -35,16 +35,8 @@ def chat(request: MessageRequest):
 
     # The last message is the final response
     final_response = messages[-1].content
-    
-    # The classification is in the second to last message (from interface_llm)
-    # But since we have memory, the history grows. We need to find the classification for THIS turn.
-    # However, for simplicity in this specific architecture:
-    # 1. User message
-    # 2. Interface LLM response (Classification)
-    # 3. Search/Conversation Node response
-    # So the last 3 messages are relevant to the current turn if we just started.
-    # But with memory, it's safer to just return the final response. 
-    # If we really need classification, we can look at the second to last message added in this turn.
+
+
     
     return {
         "response": final_response
